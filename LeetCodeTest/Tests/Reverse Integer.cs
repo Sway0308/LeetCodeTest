@@ -4,17 +4,16 @@ using System.Text;
 
 namespace LeetCodeTest
 {
-    class Reverse_Integer
+    class Reverse_Integer : ISolution
     {
-        public static void Main()
+        public string Method()
         {
             var x = -2147483648;
             var y = Reverse(x);
-            Console.WriteLine(y);
-            Console.ReadKey();
+            return y.ToString();
         }
 
-        private static int Reverse(int x)
+        private int Reverse(int x)
         {
             var value = 0.0;
             while (x != 0)

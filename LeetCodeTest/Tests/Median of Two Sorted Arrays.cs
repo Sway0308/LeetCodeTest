@@ -5,20 +5,17 @@ using System.Linq;
 
 namespace LeetCodeTest
 {
-    class Median_of_Two_Sorted_Arrays
+    class Median_of_Two_Sorted_Arrays : ISolution
     {
-        public static void Main()
+        public string Method()
         {
-            Console.WriteLine(DateTime.Now);
-            Console.WriteLine(DateTime.Now);
             var a = new int[] { 1, 2 };
             var b = new int[] { 3, 4 };
             var ans = FindMedianSortedArrays(a, b);
-            Console.WriteLine(ans);
-            Console.ReadKey();
+            return ans.ToString();
         }
 
-        public static double FindMedianSortedArrays(int[] nums1, int[] nums2)
+        public double FindMedianSortedArrays(int[] nums1, int[] nums2)
         {
             var result = nums1.Concat(nums2).OrderBy(x => x);
             var count = result.Count();

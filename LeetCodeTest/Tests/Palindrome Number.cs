@@ -5,18 +5,17 @@ using System.Linq;
 
 namespace LeetCodeTest
 {
-    class Palindrome_Number
+    class Palindrome_Number : ISolution
     {
-        public static void Main()
+        public string Method()
         {
             var x = 2147483647;
             var ans = IsPalindrome(x);
-            Console.WriteLine(ans);
-            Console.ReadKey();
+            return ans.ToString();
         }
 
 
-        public static bool IsPalindrome(int x)
+        public bool IsPalindrome(int x)
         {
             if (x < 0 || (x >= 10 && x % 10 ==0))
                 return false;

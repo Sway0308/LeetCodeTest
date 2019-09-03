@@ -8,19 +8,16 @@ namespace LeetCodeTest
     /// <summary>
     /// Given a string, find the length of the longest substring without repeating characters.
     /// </summary>
-    class LengthOfLongestSubstring
+    class LengthOfLongestSubstring : ISolution
     {
-        public static void Main()
+        public string Method()
         {
-            Console.WriteLine(DateTime.Now);
             var s = "abcdefghijklmnopqrstuvwxyzdef";
             var ans = CalcLengthOfLongestSubstring2(s);
-            Console.WriteLine(DateTime.Now);
-            Console.WriteLine(ans);
-            Console.ReadKey();
+            return ans.ToString();
         }
 
-        public static int CalcLengthOfLongestSubstring2(string s)
+        public int CalcLengthOfLongestSubstring2(string s)
         {
             int max = 0;
             int i = 0;
