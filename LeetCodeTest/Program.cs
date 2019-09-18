@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LeetCodeTest
 {
@@ -6,7 +8,56 @@ namespace LeetCodeTest
     {
         static void Main(string[] args)
         {
-            var sol = GetSolution("LeetCodeTest.Longest_Common_Prefix");
+            var type = typeof(ISolution);
+            var matchTypes = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(x => x.GetTypes())
+                .Where(x => type.IsAssignableFrom(x) && x != type);
+            var dic = new Dictionary<int, string>();
+            for (int i = 0; i < matchTypes.Count(); i++)
+            {
+                dic.Add(i + 1, matchTypes.ElementAt(i).FullName);
+            }
+
+            StartTest(dic);
+        }
+
+        private static void StartTest(Dictionary<int, string> dic)
+        {
+            Console.Clear();
+
+            foreach (var key in dic.Keys)
+            {
+                Console.WriteLine($"{key}. {dic[key]}");
+            }
+
+            var ans = Console.ReadLine();
+            if (ans.Equals("Exit", StringComparison.InvariantCultureIgnoreCase))
+            {
+                Console.WriteLine("bye bye");
+                Console.ReadKey();
+                return;
+            }
+            else if (!int.TryParse(ans, out var number))
+            {
+                Console.WriteLine("Wrong input");
+                Console.ReadKey();
+            }
+            else if (!dic.ContainsKey(number))
+            {
+                Console.WriteLine("Wrong number");
+                Console.ReadKey();
+            }
+            else
+            {
+                DoTest(dic[number]);
+            }
+
+            StartTest(dic);
+        }
+
+        private static void DoTest(string assemblyName)
+        {
+            var sol = GetSolution(assemblyName);
             var strTime = DateTime.Now;
             Console.WriteLine(strTime);
             var ans = SoluteMethod(sol);
