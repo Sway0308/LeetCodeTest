@@ -66,6 +66,14 @@ namespace LeetCodeTest
             Console.WriteLine("Total time：" + (endTime - strTime).TotalMilliseconds);
             Console.WriteLine("Ans：" + ans);
             Console.ReadKey();
+
+            Console.WriteLine("Another Test?....(Y)");
+            var continueTest = Console.ReadLine();
+            if (continueTest.ToUpper() != "Y")
+            {
+                Console.WriteLine("Continue Test：" + assemblyName);
+                DoTest(assemblyName);
+            }
         }
 
         private static ISolution GetSolution(string assemblyName)
