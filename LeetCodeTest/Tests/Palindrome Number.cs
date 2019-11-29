@@ -5,7 +5,10 @@ using System.Linq;
 
 namespace LeetCodeTest
 {
-    class Palindrome_Number : ISolution
+    /// <summary>
+    /// Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.
+    /// </summary>
+    class Palindrome_Number : ISolution, IEasy, IComplete
     {
         public string Method()
         {

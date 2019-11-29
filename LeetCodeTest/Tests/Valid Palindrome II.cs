@@ -8,7 +8,7 @@ namespace LeetCodeTest.Tests
     /// Given a non-empty string s, you may delete at most one character. 
     /// Judge whether you can make it a palindrome.
     /// </summary>
-    class Valid_Palindrome_II : ISolution
+    class Valid_Palindrome_II : ISolution, IEasy, IComplete
     {
         public string Method()
         {

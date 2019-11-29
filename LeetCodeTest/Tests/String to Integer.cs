@@ -14,7 +14,7 @@ namespace LeetCodeTest.Tests
     /// or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.
     /// If no valid conversion could be performed, a zero value is returned.
     /// </summary>
-    class String_to_Integer : ISolution
+    class String_to_Integer : ISolution, IMedium, IComplete
     {
         public string Method()
         {

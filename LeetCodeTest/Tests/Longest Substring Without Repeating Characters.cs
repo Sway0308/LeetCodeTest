@@ -8,7 +8,7 @@ namespace LeetCodeTest
     /// <summary>
     /// Given a string, find the length of the longest substring without repeating characters.
     /// </summary>
-    class LengthOfLongestSubstring : ISolution
+    class Longest_Substring_Without_Repeating_Characters : ISolution, IMedium, IComplete
     {
         public string Method()
         {

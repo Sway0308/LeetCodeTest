@@ -9,7 +9,7 @@ namespace LeetCodeTest.Tests
     /// Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
     /// Note: For the purpose of this problem, we define empty string as valid palindrome.
     /// </summary>
-    class Valid_Palindrome : ISolution
+    class Valid_Palindrome : ISolution, IEasy, IComplete
     {
         public string Method()
         {

@@ -7,7 +7,7 @@ namespace LeetCodeTest.Tests
     /// <summary>
     /// Given a linked list, remove the n-th node from the end of list and return its head.
     /// </summary>
-    class Remove_Nth_Node_From_End_of_List : ISolution
+    class Remove_Nth_Node_From_End_of_List : ISolution, IMedium, IComplete
     {
         private ListNode CreateNode(List<int> vals)
         {
@@ -33,7 +33,7 @@ namespace LeetCodeTest.Tests
                        CreateNode(new List<int> { 1 });
             var n = 1;
             var node = RemoveNthFromEnd(head, n);
-            return ConvertToStr(node);
+            return node.ConvertToStr();
         }
 
         private ListNode RemoveNthFromEnd(ListNode head, int n)
@@ -49,19 +49,6 @@ namespace LeetCodeTest.Tests
             while (node != null)
             {
                 result.Add(node.val);
-                node = node.next;
-            }
-            return result;
-        }
-
-
-        private string ConvertToStr(ListNode node)
-        {
-            var result = node.val.ToString();
-            node = node.next;
-            while (node != null)
-            {
-                result += node.val.ToString();
                 node = node.next;
             }
             return result;

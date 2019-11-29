@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LeetCodeTest.Tests
 {
-    class Add_Two_Numbers_II : ISolution
+    class Add_Two_Numbers_II : ISolution, IMedium, IComplete
     {
         private ListNode CreateNode(List<int> vals)
         {
@@ -30,7 +30,7 @@ namespace LeetCodeTest.Tests
             //var l1 = CreateNode(new List<int> { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 });
             //var l2 = CreateNode(new List<int> { 5, 6, 4 });
             var node = AddTwoNumbers(l1, l2);
-            var ans = ConvertToStr(node);
+            var ans = node.ConvertToStr();
             return ans;
         }
 
@@ -63,18 +63,6 @@ namespace LeetCodeTest.Tests
                 node = node.next;
             }
             result.Reverse();
-            return result;
-        }
-
-        private string ConvertToStr(ListNode node)
-        {
-            var result = node.val.ToString();
-            node = node.next;
-            while (node != null)
-            {
-                result += node.val.ToString();
-                node = node.next;
-            }
             return result;
         }
     }

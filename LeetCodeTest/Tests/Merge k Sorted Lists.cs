@@ -4,7 +4,10 @@ using System.Text;
 
 namespace LeetCodeTest.Tests
 {
-    class Merge_k_Sorted_Lists : ISolution
+    /// <summary>
+    /// Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
+    /// </summary>
+    class Merge_k_Sorted_Lists : ISolution, IHard, IComplete
     {
         public string Method()
         {
@@ -14,7 +17,7 @@ namespace LeetCodeTest.Tests
                 CreateNode(new List<int> { 2, 6 })
             };
             var node = MergeKLists(lists);
-            return ConvertToStr(node);
+            return node.ConvertToStr();
         }
 
         public ListNode MergeKLists(ListNode[] lists)
@@ -50,18 +53,6 @@ namespace LeetCodeTest.Tests
             while (node != null)
             {
                 result.Add(node.val);
-                node = node.next;
-            }
-            return result;
-        }
-
-        private string ConvertToStr(ListNode node)
-        {
-            var result = node.val.ToString();
-            node = node.next;
-            while (node != null)
-            {
-                result += node.val.ToString();
                 node = node.next;
             }
             return result;

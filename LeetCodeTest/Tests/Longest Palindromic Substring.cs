@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace LeetCodeTest
 {
+    /// <summary>
+    /// Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+    /// </summary>
     class Longest_Palindromic_Substring : ISolution
     {
         public string Method()

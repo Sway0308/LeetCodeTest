@@ -4,8 +4,10 @@ using System.Text;
 
 namespace LeetCodeTest
 {
-    public interface ISolution
+    /// <summary>
+    /// Test: Hard
+    /// </summary>
+    interface IHard
     {
-        string Method();
     }
 }

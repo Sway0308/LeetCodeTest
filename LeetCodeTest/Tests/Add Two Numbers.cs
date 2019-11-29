@@ -10,7 +10,7 @@ namespace LeetCodeTest.Tests
     /// Add the two numbers and return it as a linked list.
     /// You may assume the two numbers do not contain any leading zero, except the number 0 itself.
     /// </summary>
-    class Add_Two_Numbers : ISolution
+    class Add_Two_Numbers : ISolution, IMedium, IComplete
     {
         private ListNode CreateNode(int[] vals)
         {
@@ -36,7 +36,7 @@ namespace LeetCodeTest.Tests
             var l1 = CreateNode(new int[] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 });
             var l2 = CreateNode(new int[] { 5, 6, 4 });
             var node = AddTwoNumbers(l1, l2);
-            var ans = ConvertToStr(node);
+            var ans = node.ConvertToStr();
             return ans;
         }
 
@@ -67,18 +67,6 @@ namespace LeetCodeTest.Tests
                 l2 = l2?.next;
             }
             return firstNode;
-        }
-
-        private string ConvertToStr(ListNode node)
-        {
-            var result = node.val.ToString();
-            node = node.next;
-            while (node != null)
-            {
-                result += node.val.ToString();
-                node = node.next;
-            }
-            return result;
         }
     }
 }

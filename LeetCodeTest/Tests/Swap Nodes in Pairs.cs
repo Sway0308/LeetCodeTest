@@ -9,13 +9,13 @@ namespace LeetCodeTest.Tests
     /// Given a linked list, swap every two adjacent nodes and return its head.
     /// You may not modify the values in the list's nodes, only nodes itself may be changed.
     /// </summary>
-    class Swap_Nodes_in_Pairs : ISolution
+    class Swap_Nodes_in_Pairs : ISolution, IMedium, IComplete
     {
         public string Method()
         {
             var head = CreateNode(new List<int> { 1, 2, 3, 4 });
             var node = SwapPairs(head);
-            return ConvertToStr(node);
+            return node.ConvertToStr();
         }
 
         public ListNode SwapPairs(ListNode head)
@@ -48,19 +48,6 @@ namespace LeetCodeTest.Tests
                 node = node.next;
             }
             return firstNode;
-        }
-
-
-        private string ConvertToStr(ListNode node)
-        {
-            var result = node.val.ToString();
-            node = node.next;
-            while (node != null)
-            {
-                result += node.val.ToString();
-                node = node.next;
-            }
-            return result;
         }
 
         private List<int> ConvertToList(ListNode node)

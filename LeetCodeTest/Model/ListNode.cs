@@ -10,8 +10,21 @@ namespace LeetCodeTest
         public ListNode next;
         public ListNode(int x) { val = x; }
 
+        public string ConvertToStr()
+        {
+            var node = this;
+            var result = node.val.ToString();
+            node = node.next;
+            while (node != null)
+            {
+                result += node.val.ToString();
+                node = node.next;
+            }
+            return result;
+        }
 
-        private ListNode CreateNode(int[] vals)
+
+        public static ListNode CreateNode(int[] vals)
         {
             var firstNode = new ListNode(vals[0]);
             var node = firstNode;
@@ -26,32 +39,7 @@ namespace LeetCodeTest
             return firstNode;
         }
 
-
-        private string ConvertToStr(ListNode node)
-        {
-            var result = node.val.ToString();
-            node = node.next;
-            while (node != null)
-            {
-                result += node.val.ToString();
-                node = node.next;
-            }
-            return result;
-        }
-
-        private List<int> ConvertToList(ListNode node)
-        {
-            var result = new List<int>();
-            while (node != null)
-            {
-                result.Add(node.val);
-                node = node.next;
-            }
-            result.Reverse();
-            return result;
-        }
-
-        private ListNode CreateNode(List<int> vals)
+        public static ListNode CreateNode(List<int> vals)
         {
             var firstNode = new ListNode(vals[0]);
             var node = firstNode;
@@ -64,6 +52,18 @@ namespace LeetCodeTest
                 node = node.next;
             }
             return firstNode;
+        }
+
+        private List<int> ConvertToList(ListNode node)
+        {
+            var result = new List<int>();
+            while (node != null)
+            {
+                result.Add(node.val);
+                node = node.next;
+            }
+            result.Reverse();
+            return result;
         }
     }
 }
