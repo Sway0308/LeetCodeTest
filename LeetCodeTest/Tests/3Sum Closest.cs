@@ -10,7 +10,7 @@ namespace LeetCodeTest.Tests
     /// find three integers in nums such that the sum is closest to target. 
     /// Return the sum of the three integers. You may assume that each input would have exactly one solution.
     /// </summary>
-    class _3Sum_Closest : ISolution
+    class _3Sum_Closest : ISolution, IMedium, IComplete
     {
         public string Method()
         {

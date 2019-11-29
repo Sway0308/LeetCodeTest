@@ -8,7 +8,7 @@ namespace LeetCodeTest.Tests
     /// Merge two sorted linked lists and return it as a new list. 
     /// The new list should be made by splicing together the nodes of the first two lists.
     /// </summary>
-    class Merge_Two_Sorted_Lists : ISolution
+    class Merge_Two_Sorted_Lists : ISolution, IEasy, IComplete
     {
         private ListNode CreateNode(List<int> vals)
         {
@@ -37,7 +37,7 @@ namespace LeetCodeTest.Tests
             //var l1 = CreateNode(new List<int> { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 });
             //var l2 = CreateNode(new List<int> { 5, 6, 4 });
             var node = MergeTwoLists(l1, l2);
-            var ans = ConvertToStr(node);
+            var ans = node.ConvertToStr();
             return ans;
         }
 
@@ -56,18 +56,6 @@ namespace LeetCodeTest.Tests
             while (node != null)
             {
                 result.Add(node.val);
-                node = node.next;
-            }
-            return result;
-        }
-
-        private string ConvertToStr(ListNode node)
-        {
-            var result = node.val.ToString();
-            node = node.next;
-            while (node != null)
-            {
-                result += node.val.ToString();
                 node = node.next;
             }
             return result;

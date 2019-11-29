@@ -5,7 +5,10 @@ using System.Linq;
 
 namespace LeetCodeTest
 {
-    class PhraseToPhoneNumber : ISolution
+    /// <summary>
+    /// 文字變成電話號碼
+    /// </summary>
+    class PhraseToPhoneNumber : ISolution, IComplete
     {
         public string Method()
         {

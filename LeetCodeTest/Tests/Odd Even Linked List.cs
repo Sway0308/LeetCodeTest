@@ -10,14 +10,14 @@ namespace LeetCodeTest.Tests
     /// Please note here we are talking about the node number and not the value in the nodes.
     /// You should try to do it in place.The program should run in O(1) space complexity and O(nodes) time complexity.
     /// </summary>
-    class Odd_Even_Linked_List : ISolution
+    class Odd_Even_Linked_List : ISolution, IMedium, IComplete
     {
         public string Method()
         {
             var head = //CreateNode(new List<int> { 1, 2, 3, 4, 5 });
                        CreateNode(new List<int> { 2, 1, 3, 5, 6, 4, 7 });
             var node = OddEvenList(head);
-            return ConvertToStr(node);
+            return node.ConvertToStr();
         }
 
         public ListNode OddEvenList(ListNode head)
@@ -66,19 +66,6 @@ namespace LeetCodeTest.Tests
                 yield return node.val;
                 node = node.next;
             }
-        }
-
-
-        private string ConvertToStr(ListNode node)
-        {
-            var result = node.val.ToString();
-            node = node.next;
-            while (node != null)
-            {
-                result += node.val.ToString();
-                node = node.next;
-            }
-            return result;
         }
     }
 }

@@ -4,7 +4,10 @@ using System.Text;
 
 namespace LeetCodeTest
 {
-    class Reverse_Integer : ISolution
+    /// <summary>
+    /// Given a 32-bit signed integer, reverse digits of an integer.
+    /// </summary>
+    class Reverse_Integer : ISolution, IEasy, IComplete
     {
         public string Method()
         {

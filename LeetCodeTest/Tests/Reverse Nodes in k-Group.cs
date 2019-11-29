@@ -9,78 +9,70 @@ namespace LeetCodeTest.Tests
     /// Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.
     /// k is a positive integer and is less than or equal to the length of the linked list.
     /// If the number of nodes is not a multiple of k then left-out nodes in the end should remain as it is.
+    /// Note:
+    ///     Only constant extra memory is allowed.
+    ///     You may not alter the values in the list's nodes, only nodes itself may be changed.
     /// </summary>
-    class Reverse_Nodes_in_k_Group : ISolution
+    class Reverse_Nodes_in_k_Group : ISolution, IHard//, IComplete
     {
         public string Method()
         {
-            var head = CreateNode(new List<int> { 1, 2, 3, 4, 5 });
+            var head = ListNode.CreateNode(new List<int> { 1, 2, 3, 4, 5 });
             var k = 3;
             var node = ReverseKGroup(head, k);
-            return ConvertToStr(node);
+            return node.ConvertToStr();
         }
 
         public ListNode ReverseKGroup(ListNode head, int k)
         {
-            var list = ConvertToList(head);
-            var quotient = list.Count / k;
-            var remainder = list.Count % k;
-            var newList = new List<int>();
+            if (head == null || head.next == null)
+                return head;
+
+            var nodes = ExtractListNode(head);
+            var sortedNodes = SortNodes(nodes, k);
+            head = sortedNodes.Last();
+            for (int i = sortedNodes.Count() - 2; i >= 0; i--)
+            {
+                sortedNodes.ElementAt(i).next = head;
+                head = sortedNodes.ElementAt(i);
+            }
+            return head;
+        }
+
+        private IEnumerable<ListNode> ExtractListNode(ListNode node)
+        {
+            var result = new List<ListNode>();
+            while (node != null)
+            {
+                var nextNode = node.next;
+                node.next = null;
+                result.Add(node);
+                node = nextNode;
+            }
+            return result;
+        }
+
+        private IEnumerable<ListNode> SortNodes(IEnumerable<ListNode> nodes, int k)
+        {
+            var result = new List<ListNode>();
+            var quotient = nodes.Count() / k;
             for (int i = 0; i < quotient; i++)
             {
                 var index = k * i;
                 for (int j = k - 1; j >= 0; j--)
                 {
-                    newList.Add(list.ElementAt(index + j));
+                    result.Add(nodes.ElementAt(index + j));
                 }
             }
 
+            var remainder = nodes.Count() % k;
             if (remainder > 0)
             {
-                var remainList = list.Skip(quotient * k);
+                var remainList = nodes.Skip(quotient * k);
                 foreach (var item in remainList)
                 {
-                    newList.Add(item);
+                    result.Add(item);
                 }
-            }
-
-            return newList.Count == 0 ? null : CreateNode(newList);
-        }
-
-        private ListNode CreateNode(List<int> vals)
-        {
-            var firstNode = new ListNode(vals[0]);
-            var node = firstNode;
-            for (int i = 0; i < vals.Count; i++)
-            {
-                if (i == 0)
-                    continue;
-
-                node.next = new ListNode(vals[i]);
-                node = node.next;
-            }
-            return firstNode;
-        }
-
-        private List<int> ConvertToList(ListNode node)
-        {
-            var result = new List<int>();
-            while (node != null)
-            {
-                result.Add(node.val);
-                node = node.next;
-            }
-            return result;
-        }
-
-        private string ConvertToStr(ListNode node)
-        {
-            var result = node.val.ToString();
-            node = node.next;
-            while (node != null)
-            {
-                result += node.val.ToString();
-                node = node.next;
             }
             return result;
         }

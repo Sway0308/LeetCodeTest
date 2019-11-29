@@ -12,7 +12,7 @@ namespace LeetCodeTest.Tests
     ///     2. Open brackets must be closed in the correct order.
     /// Note that an empty string is also considered valid.
     /// </summary>
-    class Valid_Parentheses : ISolution
+    class Valid_Parentheses : ISolution, IEasy, IComplete
     {
         private readonly Dictionary<char, char> validPar = new Dictionary<char, char> { { '(', ')' }, { '[', ']' }, { '{', '}' } };
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,16 +10,33 @@ namespace LeetCodeTest
         static void Main(string[] args)
         {
             var type = typeof(ISolution);
+            var completeType = typeof(IComplete);
             var matchTypes = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(x => x.GetTypes())
-                .Where(x => type.IsAssignableFrom(x) && x != type);
+                .Where(x => !completeType.IsAssignableFrom(x) && type.IsAssignableFrom(x) && x != type);
             var dic = new Dictionary<int, string>();
+            var services = new ServiceCollection();
             for (int i = 0; i < matchTypes.Count(); i++)
             {
-                dic.Add(i + 1, matchTypes.ElementAt(i).FullName);
+                var assemblyName = matchTypes.ElementAt(i).FullName;
+                dic.Add(i + 1, assemblyName);
+                services.AddScoped(assemblyName, GetSolution);
             }
 
+
+
+            var a = services.BuildServiceProvider().GetRequiredService("LeetCodeTest.Tests.Sort_Colors", GetSolution);
+            var b = a.Method();
+
             StartTest(dic);
+        }
+
+        private static IServiceCollection ConfigureServices(IServiceCollection services)
+        {
+            services.AddScoped<ISolution>(x => {
+                return GetSolution("");
+            });
+            return services;
         }
 
         private static void StartTest(Dictionary<int, string> dic)

@@ -8,7 +8,7 @@ namespace LeetCodeTest.Tests
     /// <summary>
     /// Given a singly linked list, determine if it is a palindrome.
     /// </summary>
-    class Palindrome_Linked_List : ISolution
+    class Palindrome_Linked_List : ISolution, IEasy, IComplete
     {
         public string Method()
         {
