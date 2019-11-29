@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LeetCodeTest.Tests
 {
-    class FindSumOfThousands : ISolution
+    class FindSumOfThousands : ISolution, IComplete
     {
         public string Method()
         {
